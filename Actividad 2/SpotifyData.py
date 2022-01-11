@@ -1,0 +1,36 @@
+import pandas as pd
+
+file = './data.csv'
+
+df = pd.read_csv(file)
+print("\nNúmero de variables:", df.shape[1])     #tupla con número de renglones y número de columnas
+print("Número de registros:", df.shape[0])     #tupla con número de renglones y número de columnas
+
+print("\n****** Nombre de columnas ******")   #lista con nombres de las columnas. Se puede cambiar el nombre de las columnas al asignar otro valor a este atributo
+for column in df.columns:
+	print("-", column)
+
+print("\n******** Tipos de datos ********\n", df.dtypes)    #tipos de datos de cada columna
+
+
+# quita los renglones (axis=0) que contienen cualquier (how='any', 'all') columna vacía, inplace significa que modifica el dataframe df
+df.dropna(axis = 0, how = 'any', inplace = True)
+
+
+# Estadísticos de la columna 'danceability'
+print("\n***** Estadísticos de la columna 'danceability' *****")
+print("\nValores únicos:", df["danceability"].unique()) # Valores únicos
+print("\nValor máximo:", df["danceability"].max()) # Valor máximo
+print("Valor mínimo:", df["danceability"].min()) # Valor mínimo
+print("\nPromedio:", df["danceability"].mean()) # Promedio
+print("Mediana:", df["danceability"].median()) # Mediana
+print("Desviación estándar:", df["danceability"].std()) # Desviación estándar
+
+# Estadísticos de la columna 'key'
+print("\n******* Estadísticos de la columna 'key' *******")
+print("\nValores únicos:", df["key"].unique()) # Valores únicos
+print("\nValor máximo:", df["key"].max()) # Valor máximo
+print("Valor mínimo:", df["key"].min()) # Valor mínimo
+print("\nPromedio:", df["key"].mean()) # Promedio
+print("Mediana:", df["key"].median()) # Mediana
+print("Desviación estándar:", df["key"].std()) # Desviación estándar
